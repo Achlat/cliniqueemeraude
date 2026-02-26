@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="https://static.readdy.ai/static/e.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinique ÉMERAUDE - Centre médical pluridisciplinaire à Lomé</title>
+    <meta name="description" content="Clinique ÉMERAUDE à Lomé : toutes spécialités médicales, explorations cardiovasculaires, échographies, laboratoire, soins intensifs de cardiologie. Plateau technique moderne.">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0b4f6c', // bleu médical profond
+                        secondary: '#2ba6cb', // cyan professionnel
+                        accent: '#f1f9ff', // lumière médicale
+                        deep: '#083d4f'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(11, 79, 108, 0.85), rgba(43, 166, 203, 0.75)), url('on.avif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: #25D366;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 61, 79, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 25px 40px -10px rgba(0,0,0,0.5);
+        }
+        .service-card {
+            transition: all 0.25s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2ba6cb;
+            transition: width 0.25s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .pillar-bg {
+            background: radial-gradient(circle at 10% 30%, rgba(43,166,203,0.03) 0%, transparent 60%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800 antialiased">
+
+    <!-- Navigation premium -->
+    <nav class="bg-white/95 backdrop-blur-sm border-b border-gray-100 fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <span class="text-3xl font-extrabold tracking-tight text-primary">CLINIQUE EMERAUDE</span>
+                    <span class="ml-3 px-3 py-1 bg-accent text-deep text-xs font-semibold rounded-full hidden sm:inline-block"></span>
+                </div>
+                <div class="hidden md:flex space-x-10 font-medium text-sm">
+                    <a href="#accueil" class="nav-link text-gray-700 hover:text-primary transition">Accueil</a>
+                    <a href="#specialites" class="nav-link text-gray-700 hover:text-primary transition">Spécialités</a>
+                    <a href="#explorations" class="nav-link text-gray-700 hover:text-primary transition">Explorations</a>
+                    <a href="#galerie" class="nav-link text-gray-700 hover:text-primary transition">Galerie</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition">Contact</a>
+                </div>
+                <button class="bg-primary text-white px-7 py-3 !rounded-button hover:bg-deep transition-all duration-200 shadow-md hover:shadow-lg font-semibold text-sm tracking-wide whitespace-nowrap">
+                    <i class="ri-calendar-check-line mr-1 align-middle"></i> Prendre RDV
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section Clinique EMERAUDE -->
+    <section id="accueil" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-deep/90 via-primary/80 to-secondary/50 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[url('https://readdy.ai/api/search-image?query=abstract%20medical%20cross%20and%20heart%20beat%20line%20on%20transparent%20background%20blue%20tones&width=1920&height=1080&seq=pattern&orientation=landscape')] opacity-10"></div>
+        <div class="relative z-10 w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl">
+                    <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-semibold tracking-wider mb-6 fade-in"></span>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight fade-in">
+                        Clinique EMERAUDE
+                        <span class="block text-3xl md:text-4xl font-light text-accent mt-4">Un centre médical pluridisciplinaire au service de votre santé</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed fade-in stagger-1 max-w-2xl">
+                        Établissement moderne assurant toutes les spécialités médicales, avec un plateau technique performant pour le diagnostic, le suivi et la prévention des maladies.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-5 fade-in stagger-2">
+                        <button class="bg-secondary text-white px-8 py-4 !rounded-button text-lg font-semibold hover:bg-cyan-700 transition-all transform hover:scale-[1.02] shadow-xl hover:shadow-2xl flex items-center justify-center whitespace-nowrap">
+                            <i class="ri-heart-pulse-line mr-2"></i> Urgences 24h/24
+                        </button>
+                       <a href="#soins-domicile">
+    <button class="border-2 border-white/80 text-white px-8 py-4 !rounded-button text-lg font-semibold hover:bg-white hover:text-primary backdrop-blur-sm transition-all whitespace-nowrap">
+        Soins à domicile
+    </button>
+</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+            <a href="#specialites" class="text-white/80 hover:text-white"><i class="ri-arrow-down-circle-line text-3xl"></i></a>
+        </div>
+    </section>
+
+    <!-- Présentation + engagements – Clinique EMERAUDE -->
+    <section id="specialites" class="py-24 bg-accent/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-secondary font-semibold text-sm uppercase tracking-[0.3em]">PRISE EN CHARGE GLOBALE</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">Toutes les spécialités médicales en un lieu unique</h2>
+                <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-light">
+                    <strong class="font-semibold text-primary">Clinique EMERAUDE</strong> réunit des médecins spécialistes, un plateau technique de pointe et une équipe soignante dédiée. Nous offrons des soins allant de la médecine générale aux explorations cardiovasculaires les plus pointues.
+                </p>
+            </div>
+            
+            <!-- 4 piliers spécialités (version regroupée) -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all border-b-4 border-primary/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="ri-stethoscope-line text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Spécialités médicales</h3>
+                   <p class="text-gray-600 text-center leading-relaxed text-sm">
+    Cardiologie, gynécologie, pédiatrie, médecine interne, endocrinologie, néphrologie, pneumologie, gastroentérologie, rhumatologie, neurologie, dermatologie, oto-rhino-laryngologie, urologie, psychiatrie.
+</p>
+
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all border-b-4 border-secondary/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="ri-heart-pulse-line text-3xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Explorations cardiovasculaires</h3>
+                    <p class="text-gray-600 text-center leading-relaxed text-sm">
+                        ECG repos/effort, échocardiographie, doppler artériel/veineux, holter tensionnel, bilan cardiovasculaire complet.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all border-b-4 border-primary/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="ri-ultrasound-line text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Échographies & imagerie</h3>
+                    <p class="text-gray-600 text-center leading-relaxed text-sm">
+                        Abdominale, pelvienne, obstétricale, cardiaque, doppler, parties molles. Radiographie médicale et spirométrie.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all border-b-4 border-secondary/30">
+                    <div class="w-16 h-16 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                        <i class="ri-survey-line text-3xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Engagements qualité</h3>
+                    <p class="text-gray-600 text-center leading-relaxed text-sm">
+                        Équipements modernes, hygiène rigoureuse, résultats rapides, accueil professionnel et humain.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spécialités détaillées – Clinique EMERAUDE -->
+    <section id="explorations" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-secondary font-semibold text-sm uppercase tracking-[0.3em]">EXPERTISE MÉDICALE</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">Spécialités & explorations</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    De la consultation spécialisée aux examens de pointe, nous couvrons l'ensemble des besoins en santé.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
+                <!-- Bloc 1 : Spécialités médicales -->
+                <div class="group service-card bg-gradient-to-br from-white to-accent/20 p-8 rounded-2xl border border-gray-100 hover:border-primary/20 shadow-lg">
+                    <div class="flex items-start">
+                        <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-5 shrink-0">
+                            <i class="ri-stethoscope-line text-2xl text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Toutes les spécialités médicales</h3>
+                            <p class="text-gray-600 mb-5 leading-relaxed">
+                                Une équipe pluridisciplinaire pour une prise en charge complète.
+                            </p>
+                            <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Médecine générale</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Cardiologie/pédiatrique</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Gynécologie – Obstétrique</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Pédiatrie</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Médecine interne</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Endocrinologie / Diabéto</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Néphrologie</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Pneumologie</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Gastro-entérologie</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Rhumatologie</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Neurologie</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Dermatologie</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> ORL</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Urologie</span>
+                                <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Psychiatrie / Psychologie</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bloc 2 : Explorations cardiovasculaires -->
+                <div class="group service-card bg-gradient-to-br from-white to-accent/20 p-8 rounded-2xl border border-gray-100 hover:border-primary/20 shadow-lg">
+                    <div class="flex items-start">
+                        <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mr-5 shrink-0">
+                            <i class="ri-heart-3-line text-2xl text-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Explorations cardiovasculaires</h3>
+                            <p class="text-gray-600 mb-5 leading-relaxed">
+                                Unité de soins intensifs de cardiologie et plateau technique dédié.
+                            </p>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> ECG au repos et d'effort</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Échocardiographie transthoracique</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Doppler cardiaque / carotides / artères</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Doppler veineux membres inférieurs</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Mesure et suivi tensionnel</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Bilan cardiovasculaire complet</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Évaluation du risque cardiovasculaire</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bloc 3 : Échographies générales et spécialisées -->
+                <div class="group service-card bg-gradient-to-br from-white to-accent/20 p-8 rounded-2xl border border-gray-100 hover:border-primary/20 shadow-lg">
+                    <div class="flex items-start">
+                        <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-5 shrink-0">
+                            <i class="ri-ultrasound-line text-2xl text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Échographies</h3>
+                            <p class="text-gray-600 mb-5 leading-relaxed">
+                                Échographies générales, gynéco-obstétricales et spécialisées.
+                            </p>
+                           <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Abdominale</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Hépatique</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Rénale</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Pelvienne</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Prostatique</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Parties molles</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Gynécologique</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Obstétricale 1,2,3 trim.</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Échocardiographie</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Doppler artériel</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Doppler veineux</span>
+    <span class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-1"></i> Radiographie</span>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Bloc 4 : Autres explorations et services -->
+                <div class="group service-card bg-gradient-to-br from-white to-accent/20 p-8 rounded-2xl border border-gray-100 hover:border-primary/20 shadow-lg">
+                    <div class="flex items-start">
+                        <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mr-5 shrink-0">
+                            <i class="ri-hospital-line text-2xl text-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Plateau technique & services</h3>
+                            <p class="text-gray-600 mb-5 leading-relaxed">
+                                Laboratoire (en cours), radiographie, ophtalmologie, chirurgie, traumatologie, spirométrie, audiométrie, bloc opératoire.
+                            </p>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Unité de soins intensifs de cardiologie +++</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Radiographie médicale</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Ophtalmologie / Chirurgie</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Traumatologie – Orthopédie</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Spirométrie / Audiométrie</li>
+                                <li class="flex items-center"><i class="ri-checkbox-circle-fill text-secondary mr-2"></i> Bloc opératoire</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA spécifique -->
+            <div class="mt-16 text-center">
+                <p class="text-gray-700 mb-6 text-lg">Vous souhaitez consulter un spécialiste ou réaliser un examen ?</p>
+                <button class="bg-primary text-white px-10 py-4 !rounded-button text-lg font-semibold hover:bg-deep transition shadow-xl whitespace-nowrap">
+                    <i class="ri-calendar-todo-line mr-2"></i> Prendre rendez-vous en ligne
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagements qualité (reprise des valeurs) -->
+    <section class="py-24 bg-accent/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nos engagements</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Une exigence de tous les instants pour votre santé et votre confiance.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="relative bg-white p-8 rounded-2xl shadow-md border border-gray-100">
+                    <div class="mt-2">
+                        <i class="ri-stethoscope-line text-4xl text-primary mb-5"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Toutes les spécialités en un lieu</h4>
+                        <p class="text-gray-600">De la cardiologie à la psychiatrie, évitez les parcours dispersés.</p>
+                    </div>
+                </div>
+                <div class="relative bg-white p-8 rounded-2xl shadow-md border border-gray-100">
+                    <div class="mt-2">
+                        <i class="ri-cpu-line text-4xl text-primary mb-5"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Équipements modernes</h4>
+                        <p class="text-gray-600">Échographes dernier cri, ECG, doppler, salle de radiologie.</p>
+                    </div>
+                </div>
+                <div class="relative bg-white p-8 rounded-2xl shadow-md border border-gray-100">
+                    <div class="mt-2">
+                        <i class="ri-timer-line text-4xl text-primary mb-5"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Résultats rapides</h4>
+                        <p class="text-gray-600">Comptes-rendus d'examens disponibles dans les meilleurs délais.</p>
+                    </div>
+                </div>
+                <div class="relative bg-white p-8 rounded-2xl shadow-md border border-gray-100">
+                    <div class="mt-2">
+                        <i class="ri-heart-2-line text-4xl text-primary mb-5"></i>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">Accueil humain</h4>
+                        <p class="text-gray-600">Professionnalisme, écoute et hygiène rigoureuse.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie d'images Clinique EMERAUDE (environnement médical) -->
+    <section id="galerie" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-secondary font-semibold text-sm uppercase tracking-[0.3em]">NOS SERVICES EN IMAGES</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">Des soins de qualité à Lomé</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+    Découvrez notre plateau technique moderne, équipé pour assurer des examens et soins médicaux précis et fiables.
+</p>
+
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item cursor-pointer group rounded-2xl overflow-hidden shadow-xl">
+                    <img src="a.png" alt="Consultation médicale" class="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer group rounded-2xl overflow-hidden shadow-xl">
+                    <img src="b.webp" alt="Échographie" class="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer group rounded-2xl overflow-hidden shadow-xl">
+                    <img src="c.jpg" alt="Cardiologie" class="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer group rounded-2xl overflow-hidden shadow-xl">
+                    <img src="d.jpg" alt="Consultation pédiatrique" class="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer group rounded-2xl overflow-hidden shadow-xl">
+                    <img src="e.jpg" alt="Laboratoire d'analyses" class="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                </div>
+                <div class="gallery-item cursor-pointer group rounded-2xl overflow-hidden shadow-xl">
+                    <img src="f.jpg" alt="Bloc opératoire" class="w-full h-72 object-cover object-center group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SECTION : SOINS A DOMICILE -->
+<section id="soins-domicile" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="text-secondary font-semibold text-sm uppercase tracking-[0.3em]">PRISE EN CHARGE PERSONNALISÉE</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">Soins à domicile</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Des professionnels de santé se déplacent chez vous pour assurer des soins de qualité dans le confort et la sécurité de votre foyer.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Soins infirmiers -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Soins infirmiers à domicile</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Injections et perfusions</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Pansements et soins de plaies</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Pose et surveillance de sonde</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Prélèvements biologiques</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Surveillance des signes vitaux</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Administration des médicaments</li>
+                </ul>
+            </div>
+
+            <!-- Suivi médical -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Suivi médical à domicile</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Consultation médicale à domicile</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Suivi post-opératoire</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Suivi des maladies chroniques (HTA, diabète)</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Soins palliatifs et accompagnement</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Suivi de la grossesse à domicile</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Suivi pédiatrique</li>
+                </ul>
+            </div>
+
+            <!-- Soins de rééducation -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Rééducation et kinésithérapie</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Rééducation post-AVC</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Rééducation orthopédique</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Kinésithérapie respiratoire</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Mobilisation des personnes âgées</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Prévention des escarres</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Exercices de rééducation personnalisés</li>
+                </ul>
+            </div>
+
+            <!-- Aide aux personnes dépendantes -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Aide aux personnes dépendantes</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Accompagnement des personnes âgées</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Soins aux personnes handicapées</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Aide à la toilette et à l'hygiène</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Surveillance nocturne</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Soutien aux aidants familiaux</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Aide alimentaire et nutritionnelle</li>
+                </ul>
+            </div>
+
+            <!-- Soins maternels et pédiatriques -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Soins maternels et pédiatriques</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Soins du nouveau-né à domicile</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Accompagnement allaitement maternel</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Suivi post-natal de la mère</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Vaccination à domicile</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Suivi de croissance de l'enfant</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Éducation parentale</li>
+                </ul>
+            </div>
+
+            <!-- Mise en avant / CTA -->
+            <div class="bg-secondary rounded-2xl shadow-lg p-8 flex flex-col justify-center text-white hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold mb-4">Nos engagements</h3>
+                <ul class="space-y-3 text-white/90">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-white flex-shrink-0"></span>Disponibilité 7j/7</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-white flex-shrink-0"></span>Personnel qualifié et expérimenté</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-white flex-shrink-0"></span>Matériel stérile et équipement adapté</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-white flex-shrink-0"></span>Coordination avec votre médecin traitant</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-white flex-shrink-0"></span>Intervention rapide sur Lomé</li>
+                </ul>
+                <a href="#contact" class="mt-6 inline-block text-center bg-white text-secondary font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors duration-200">
+                    Prendre rendez-vous
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION : SANTE ET SECURITE AU TRAVAIL -->
+<section id="sst" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="text-secondary font-semibold text-sm uppercase tracking-[0.3em]">PROTECTION DES TRAVAILLEURS</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6">Santé et sécurité au travail</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Un service spécialisé pour prévenir les risques professionnels, protéger la santé des employés et accompagner les entreprises vers la conformité aux normes internationales.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Médecine du travail -->
+            <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Médecine du travail</h3>
+                <p class="text-sm text-secondary font-semibold uppercase tracking-wide mb-3">Service obligatoire</p>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Visite médicale d'embauche</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Visite médicale périodique</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Visite de reprise après maladie</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Aptitude au poste de travail</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Suivi des travailleurs exposés aux risques</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Dossiers médicaux professionnels</li>
+                </ul>
+            </div>
+
+            <!-- Surveillance de la santé -->
+            <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Surveillance de la santé des travailleurs</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Dépistage hypertension et diabète</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>ECG pour postes à risque</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Audiométrie (bruit industriel)</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Test de vision</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Spirométrie (poussières, produits chimiques)</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Suivi vaccination professionnelle</li>
+                </ul>
+            </div>
+
+            <!-- Prévention des risques -->
+            <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Prévention des risques professionnels</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Identification des risques au travail</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Évaluation des postes</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Audit sécurité entreprise</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Plan de prévention</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Études ergonomiques</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Gestion du stress professionnel</li>
+                </ul>
+            </div>
+
+            <!-- Sécurité et accidents -->
+            <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Sécurité et prévention des accidents</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Formation premiers secours</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Formation incendie</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Plan d'évacuation</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Évaluation des risques industriels</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Mise en place de protocoles sécurité</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Analyse des accidents du travail</li>
+                </ul>
+            </div>
+
+            <!-- Santé mentale -->
+            <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Santé mentale et bien-être au travail</h3>
+                <p class="text-sm text-secondary font-semibold uppercase tracking-wide mb-3">Service en forte croissance</p>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Gestion du stress</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Prévention du burnout</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Soutien psychologique</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Coaching bien-être</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Amélioration de l'environnement de travail</li>
+                </ul>
+            </div>
+
+            <!-- Hygiène industrielle -->
+            <div class="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Hygiène industrielle et environnement</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Mesure du bruit</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Qualité de l'air</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Contrôle de l'éclairage</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Exposition aux produits chimiques</li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></span>Contrôle de la pollution professionnelle</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bande entreprises clientes -->
+        <div class="mt-16 bg-gray-50 rounded-2xl p-10 border border-gray-100">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold text-gray-900">Entreprises clientes concernées</h3>
+                <p class="text-gray-600 mt-2">Nos services s'adressent à tous les secteurs d'activité présents au Togo.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">BTP</span>
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">Industries</span>
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">Banques</span>
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">Télécoms</span>
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">Transport</span>
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">Ports et logistique</span>
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">Mines</span>
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">Usines</span>
+                <span class="px-5 py-2 bg-white rounded-full border border-gray-200 text-gray-700 font-medium shadow-sm">Administrations publiques</span>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#contact" class="inline-block bg-secondary text-white font-semibold px-8 py-3 rounded-xl hover:opacity-90 transition-opacity duration-200">
+                    Contacter notre service SST
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Section contact avec coordonnées Clinique EMERAUDE -->
+    <section id="contact" class="py-24 bg-accent/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-secondary font-semibold text-sm uppercase tracking-[0.3em]">CONTACT & URGENCES</span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-8">Prenez rendez-vous</h2>
+                    <p class="text-xl text-gray-700 mb-10 leading-relaxed">
+                        Pour toute consultation, examen ou information, notre équipe est à votre écoute.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-center bg-white p-6 rounded-xl shadow-md">
+                            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-5">
+                                <i class="ri-phone-line text-2xl text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Urgences 24h/24</p>
+                                <p class="text-2xl font-bold text-gray-900">92 10 01 54</p>
+                                <p class="text-sm text-gray-500">Standard : 22 10 01 54</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center bg-white p-6 rounded-xl shadow-md">
+                            <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mr-5">
+                                <i class="ri-mail-line text-2xl text-secondary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Email</p>
+                                <p class="text-xl font-semibold text-gray-900">contact@cliniqueemeraude.tg</p>
+                                <p class="text-sm text-gray-500">Réponse sous 2h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center bg-white p-6 rounded-xl shadow-md">
+                            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-5">
+                                <i class="ri-map-pin-2-line text-2xl text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Adresse</p>
+                                <p class="text-2xl font-bold text-gray-900">Lomé, Togo</p>
+                                <p class="text-sm text-gray-500">Quartier Administratif, Rue des Cliniques</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formulaire de contact / RDV -->
+                <div class="bg-white p-10 rounded-3xl shadow-2xl">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Demande de rendez-vous</h3>
+                    <form class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Nom & prénom</label>
+                            <input type="text" class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Téléphone</label>
+                            <input type="tel" class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" placeholder="92 10 01 54">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Email</label>
+                            <input type="email" class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" placeholder="patient@exemple.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Spécialité recherchée / message</label>
+                            <textarea rows="4" class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" placeholder="Cardiologie, échographie, consultation..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-4 px-6 !rounded-button font-bold hover:bg-deep transition-all shadow-lg text-lg whitespace-nowrap">
+                            Envoyer la demande <i class="ri-send-plane-fill ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Clinique EMERAUDE -->
+    <footer class="bg-deep text-white pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">CLINIQUE EMERAUDE</h3>
+                    <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+                        Centre médical pluridisciplinaire : toutes spécialités, explorations cardiovasculaires, échographies, soins intensifs de cardiologie, radiographie, bloc opératoire.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-secondary transition-all">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-secondary transition-all">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-secondary transition-all">
+                            <i class="ri-mail-send-line"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Spécialités</h4>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Cardiologie & Cardiopédiatrie</a></li>
+                        <li><a href="#" class="hover:text-white transition">Gynécologie – Obstétrique</a></li>
+                        <li><a href="#" class="hover:text-white transition">Pédiatrie</a></li>
+                        <li><a href="#" class="hover:text-white transition">Médecine interne / Endocrino</a></li>
+                        <li><a href="#" class="hover:text-white transition">Neurologie / Dermatologie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-3 text-gray-300 text-sm">
+                        <li class="flex items-center"><i class="ri-phone-line mr-2 text-secondary"></i>92 10 01 54 (urgence)</li>
+                        <li class="flex items-center"><i class="ri-mail-line mr-2 text-secondary"></i>contact@cliniqueemeraude.tg</li>
+                        <li class="flex items-center"><i class="ri-map-pin-line mr-2 text-secondary"></i>Lomé, Togo</li>
+                        <li class="flex items-center"><i class="ri-time-line mr-2 text-secondary"></i>Consultations: 8h-19h</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Agréments</h4>
+                    <p class="text-gray-300 text-sm mb-4">
+                        N° Agrément: CEM/LM/2024/045<br>
+                        Licence d'exploitation N° 789/DGS
+                    </p>
+                    <div class="bg-white/10 p-5 rounded-xl">
+                        <p class="text-xs text-gray-300 uppercase tracking-wider">ISO 9001 · CERTIFIÉ</p>
+                        <p class="text-white font-semibold">Établissement de soins agréé</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Clinique EMERAUDE. Tous droits réservés. Soins pluridisciplinaires à Lomé.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float avec numéro Clinique EMERAUDE -->
+    <a href="https://wa.me/22892100154?text=Bonjour%20Clinique%20EMERAUDE%2C%20je%20souhaite%20des%20informations%20sur%20vos%20sp%C3%A9cialit%C3%A9s%20ou%20prendre%20rendez-vous." class="whatsapp-float w-16 h-16 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl" target="_blank">
+        <i class="ri-whatsapp-line text-3xl text-white"></i>
+    </a>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span id="lightbox-close" class="absolute top-5 right-6 text-white text-4xl cursor-pointer hover:text-secondary transition">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation shadow
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    nav.classList.add('shadow-lg', 'backdrop-blur-md');
+                    nav.style.backgroundColor = 'rgba(255,255,255,0.98)';
+                } else {
+                    nav.classList.remove('shadow-lg');
+                    nav.style.backgroundColor = 'rgba(255,255,255,0.95)';
+                }
+            });
+
+            // Smooth scroll
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Lightbox galerie
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.getElementById('lightbox-close');
+            
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    lightboxImg.src = this.src;
+                    lightbox.classList.add('active');
+                });
+            });
+            
+            lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) lightbox.classList.remove('active');
+            });
+
+            // Form alert
+            const form = document.querySelector('form');
+            if(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('✅ Demande envoyée ! La Clinique EMERAUDE vous recontactera sous 24h.');
+                    form.reset();
+                });
+            }
+        });
+    </script>
+    <script src="https://static.readdy.ai/static/share.js"></script>
+</body>
+</html>
