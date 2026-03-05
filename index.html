@@ -134,14 +134,17 @@
     <nav class="bg-white/95 backdrop-blur-sm border-b border-gray-100 fixed w-full top-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <span class="text-3xl font-extrabold tracking-tight text-primary">CLINIQUE EMERAUDE</span>
-                    <span class="ml-3 px-3 py-1 bg-accent text-deep text-xs font-semibold rounded-full hidden sm:inline-block"></span>
-                </div>
+               <div class="flex items-center">
+    <img src="logo.png" alt="Logo Clinique Emeraude" class="h-32 w-auto mr-5 object-contain">
+
+    <span class="text-3xl font-extrabold tracking-tight text-primary">
+        CLINIQUE EMERAUDE
+    </span>
+</div>
                 <div class="hidden md:flex space-x-10 font-medium text-sm">
                     <a href="#accueil" class="nav-link text-gray-700 hover:text-primary transition">Accueil</a>
                     <a href="#specialites" class="nav-link text-gray-700 hover:text-primary transition">Spécialités</a>
-                    <a href="#explorations" class="nav-link text-gray-700 hover:text-primary transition">Explorations</a>
+                   
                       <a href="#assurances" class="nav-link text-gray-700 hover:text-primary transition">Assurances</a>
                     <a href="#galerie" class="nav-link text-gray-700 hover:text-primary transition">Galerie</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition">Contact</a>
@@ -730,122 +733,14 @@
 </section>
 
     <!-- Section contact avec coordonnées Clinique EMERAUDE -->
-    <section id="contact" class="py-24 bg-accent/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-secondary font-semibold text-sm uppercase tracking-[0.3em]">CONTACT & URGENCES</span>
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-8">Prenez rendez-vous</h2>
-                    <p class="text-xl text-gray-700 mb-10 leading-relaxed">
-                        Pour toute consultation, examen ou information, notre équipe est à votre écoute.
-                    </p>
-                    
-                    <div class="space-y-8">
-                        <div class="flex items-center bg-white p-6 rounded-xl shadow-md">
-                            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-5">
-                                <i class="ri-phone-line text-2xl text-primary"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500 font-medium">Urgences 24h/24</p>
-                                <p class="text-2xl font-bold text-gray-900">98 06 97 12</p>
-                                <p class="text-sm text-gray-500">Standard : 22 10 01 54</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center bg-white p-6 rounded-xl shadow-md">
-                            <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mr-5">
-                                <i class="ri-mail-line text-2xl text-secondary"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500 font-medium">Email</p>
-                                <p class="text-xl font-semibold text-gray-900">cliniquemeraude3@gmail.com</p>
-                                <p class="text-sm text-gray-500">Réponse sous 2h</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center bg-white p-6 rounded-xl shadow-md">
-                            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-5">
-                                <i class="ri-map-pin-2-line text-2xl text-primary"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500 font-medium">Adresse</p>
-                                <p class="text-2xl font-bold text-gray-900">Lomé, Togo</p>
-                                <p class="text-sm text-gray-500">Quartier Administratif, Rue des Cliniques</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Formulaire de contact / RDV -->
-               <div class="bg-white p-10 rounded-3xl shadow-2xl">
-    <h3 class="text-2xl font-bold text-gray-900 mb-6">Demande de rendez-vous</h3>
-
-    <!-- Message succès -->
-    <div id="form-success" class="hidden bg-green-50 border border-green-200 text-green-800 rounded-xl px-6 py-5 mb-5 text-center">
-        <i class="ri-checkbox-circle-fill text-green-500 text-3xl mb-2 block"></i>
-        <p class="font-bold text-lg">Demande envoyée avec succès !</p>
-        <p class="text-sm mt-1">Notre équipe vous contactera dans les plus brefs délais.</p>
-    </div>
-    <!-- Message erreur -->
-    <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-800 rounded-xl px-6 py-5 mb-5 text-center">
-        <i class="ri-error-warning-fill text-red-500 text-3xl mb-2 block"></i>
-        <p class="font-bold text-lg">Une erreur est survenue.</p>
-        <p id="form-error-detail" class="text-sm mt-1">Veuillez réessayer ou nous appeler directement au 98069712.</p>
-    </div>
-
-    <form id="contact-form" action="https://formspree.io/f/xvzbyjbr" method="POST" class="space-y-5">
-        <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-1">Nom & prénom</label>
-            <input
-                type="text"
-                name="nom"
-                required
-                class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50"
-                placeholder="Votre nom">
-        </div>
-
-        <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-1">Téléphone</label>
-            <input
-                type="tel"
-                name="telephone"
-                required
-                class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50"
-                placeholder="98069712">
-        </div>
-
-        <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-1">Email</label>
-            <input
-                type="email"
-                name="email"
-                required
-                class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50"
-                placeholder="patient@exemple.com">
-        </div>
-
-        <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-1">Spécialité recherchée / message</label>
-            <textarea
-                name="message"
-                rows="4"
-                required
-                class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50"
-                placeholder="Cardiologie, échographie, consultation..."></textarea>
-        </div>
-
-        <!-- Options Formspree -->
-        <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Clinique Émeraude">
-        <input type="hidden" name="_template" value="table">
-
-        <button type="submit" id="submit-btn" class="w-full bg-primary text-white py-4 px-6 !rounded-button font-bold hover:bg-deep transition-all shadow-lg text-lg whitespace-nowrap">
-            Envoyer la demande <i class="ri-send-plane-fill ml-2"></i>
-        </button>
-    </form>
-</div>
-            </div>
-        </div>
-    </section>
+   <section id="hero" class="w-full h-80 sm:h-96 md:h-[400px] lg:h-[450px]">
+    <img 
+        src="visite.png" 
+        alt="Clinique Émeraude" 
+        class="w-full h-full object-cover"
+    >
+</section>
+<section id="contact" class="py-24 bg-accent/30"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="grid lg:grid-cols-2 gap-12 items-center"> <div> <span class="text-secondary font-semibold text-sm uppercase tracking-[0.3em]">CONTACT & URGENCES</span> <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-8">Prenez rendez-vous</h2> <p class="text-xl text-gray-700 mb-10 leading-relaxed"> Pour toute consultation, examen ou information, notre équipe est à votre écoute. </p> <div class="space-y-8"> <div class="flex items-center bg-white p-6 rounded-xl shadow-md"> <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-5"> <i class="ri-phone-line text-2xl text-primary"></i> </div> <div> <p class="text-sm text-gray-500 font-medium">Urgences 24h/24</p> <p class="text-2xl font-bold text-gray-900">98 06 97 12</p> <p class="text-sm text-gray-500">Standard : 22 10 01 54</p> </div> </div> <div class="flex items-center bg-white p-6 rounded-xl shadow-md"> <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mr-5"> <i class="ri-mail-line text-2xl text-secondary"></i> </div> <div> <p class="text-sm text-gray-500 font-medium">Email</p> <p class="text-xl font-semibold text-gray-900">cliniquemeraude3@gmail.com</p> <p class="text-sm text-gray-500">Réponse sous 2h</p> </div> </div> <div class="flex items-center bg-white p-6 rounded-xl shadow-md"> <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mr-5"> <i class="ri-map-pin-2-line text-2xl text-primary"></i> </div> <div> <p class="text-sm text-gray-500 font-medium">Adresse</p> <p class="text-2xl font-bold text-gray-900">Lomé, Togo</p> <p class="text-sm text-gray-500">Quartier Administratif, Rue des Cliniques</p> </div> </div> </div> </div> <!-- Formulaire de contact / RDV --> <div class="bg-white p-10 rounded-3xl shadow-2xl"> <h3 class="text-2xl font-bold text-gray-900 mb-6">Demande de rendez-vous</h3> <!-- Message succès --> <div id="form-success" class="hidden bg-green-50 border border-green-200 text-green-800 rounded-xl px-6 py-5 mb-5 text-center"> <i class="ri-checkbox-circle-fill text-green-500 text-3xl mb-2 block"></i> <p class="font-bold text-lg">Demande envoyée avec succès !</p> <p class="text-sm mt-1">Notre équipe vous contactera dans les plus brefs délais.</p> </div> <!-- Message erreur --> <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-800 rounded-xl px-6 py-5 mb-5 text-center"> <i class="ri-error-warning-fill text-red-500 text-3xl mb-2 block"></i> <p class="font-bold text-lg">Une erreur est survenue.</p> <p id="form-error-detail" class="text-sm mt-1">Veuillez réessayer ou nous appeler directement au 98069712.</p> </div> <form id="contact-form" action="https://formspree.io/f/xvzbyjbr" method="POST" class="space-y-5"> <div> <label class="block text-sm font-semibold text-gray-700 mb-1">Nom & prénom</label> <input type="text" name="nom" required class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" placeholder="Votre nom"> </div> <div> <label class="block text-sm font-semibold text-gray-700 mb-1">Téléphone</label> <input type="tel" name="telephone" required class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" placeholder="98069712"> </div> <div> <label class="block text-sm font-semibold text-gray-700 mb-1">Email</label> <input type="email" name="email" required class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" placeholder="patient@exemple.com"> </div> <div> <label class="block text-sm font-semibold text-gray-700 mb-1">Spécialité recherchée / message</label> <textarea name="message" rows="4" required class="w-full px-5 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" placeholder="Cardiologie, échographie, consultation..."></textarea> </div> <!-- Options Formspree --> <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Clinique Émeraude"> <input type="hidden" name="_template" value="table"> <button type="submit" id="submit-btn" class="w-full bg-primary text-white py-4 px-6 !rounded-button font-bold hover:bg-deep transition-all shadow-lg text-lg whitespace-nowrap"> Envoyer la demande <i class="ri-send-plane-fill ml-2"></i> </button> </form> </div> </div> </div> </section>
 
     <!-- Footer Clinique EMERAUDE -->
     <footer class="bg-deep text-white pt-16 pb-10">
